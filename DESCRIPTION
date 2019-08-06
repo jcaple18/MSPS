@@ -1,0 +1,27 @@
+Package: MSPS
+Title: McKern and Stewart Pubic Symphysis
+Version: 0.0.1
+Authors@R: person("Jodi", "Caple", email = "jodicaple@gmail.com", role = c("aut","cre"))
+Description: MSPS (McKern and Stewart Pubic Symphysis) is an R package that provides three-dimensional models of the original McKern and Stewart (1957) casts, data, and descriptions to aid with age estimation when physical casts are not available.
+Depends:
+    R (>= 3.3.0),
+    rgl,
+    rmarkdown,
+    shiny,
+    shinyjs,
+    shinyRGL,
+    shinythemes,
+    shinyWidgets
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports:
+  rgl,
+  rmarkdown,
+  shiny,
+  shinyjs,
+  shinyRGL,
+  shinythemes,
+  shinyWidgets
+RoxygenNote: 6.1.1
