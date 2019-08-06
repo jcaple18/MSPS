@@ -5,9 +5,9 @@ MSPS (McKern and Stewart Pubic Symphysis) is an R package that provides three-di
 
 # Installation
 ```javascript
-if (!require("devtools")) install.packages("devtools")
+if(!require("devtools")) install.packages("devtools")
 library(devtools)
-install_github("jcaple18/MSPS", ref="v0.0.1")
+install_github("jcaple18/MSPS")
 library(MSPS)
 MSPS()
 ```
