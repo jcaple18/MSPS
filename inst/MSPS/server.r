@@ -81,10 +81,9 @@ shinyServer(function(input, output, session) {
 			outputTable2 <<- as.data.frame(cbind(tab_rnames[5:7], Ltab2, Rtab2))
 			colnames(outputTable2) <<- c("", "Left", "Right")
 		}
-		output$compositeTable <- renderDataTable(outputTable1, options = list(dom = "T", searching = FALSE))
-		output$componentTable <- renderDataTable(outputTable2, options = list(dom = "T", searching = FALSE))
-
-
+		output$compositeTable <- renderDataTable(outputTable1, options = list(aoColumnDefs = list(list(sClass = "alignCent", aTargets = c(list(1), list(2)))), dom = "T", searching = FALSE))
+		output$componentTable <- renderDataTable(outputTable2, options = list(aoColumnDefs = list(list(sClass = "alignCent", aTargets = c(list(1), list(2)))), dom = "T", searching = FALSE))
+		
 		if(input$leftval == TRUE && input$rightval == TRUE) {
 			if(as.numeric(input$LdpVal) == as.numeric(input$RdpVal)) {
 				Bdp_summ <- c("Both the left and right dorsal margins are absent (score = 0). ",
@@ -183,38 +182,47 @@ shinyServer(function(input, output, session) {
 		})
 	})
 
-	observeEvent({
-		input$scan_dp_comp
-	}, {
-
-			output$scan_dp <- renderRglwidget({
-				clear3d()
-				bg3d("white")
+	observeEvent(input$scan_dp_comp, {
+		output$scan_dp <- renderRglwidget({
+			clear3d()
+			bg3d("white")
+			if(input$scan_dp_comp == "dpSTL_0") {
+				text3d(x = -10, cex = 0.9, texts = "No cast exists for this score. An example will be added at a later date.")
+			} else {
 				rgl.triangles(get(input$scan_dp_comp), col = "grey70", ambient = "black", specular = "grey5", emission = "black", shininess = 128)
-				rglwidget()
-			})
-
+				rgl.viewpoint(theta = 0, phi = -90, fov = 0)
+			}
+			rglwidget()
+		})
 	})
 
 	observeEvent(input$scan_vr_comp, {
 		output$scan_vr <- renderRglwidget({
 			clear3d()
 			bg3d("white")
-			rgl.triangles(get(input$scan_vr_comp), col = "grey70", ambient = "black", specular = "grey5", emission = "black", shininess = 128)
+			if(input$scan_vr_comp == "vrSTL_0") {
+				text3d(x = -10, cex = 0.9, texts = "No cast exists for this score. An example will be added at a later date.")
+			} else {
+				rgl.triangles(get(input$scan_vr_comp), col = "grey70", ambient = "black", specular = "grey5", emission = "black", shininess = 128)
+				rgl.viewpoint(theta = 0, phi = -90, fov = 0)
+			}
 			rglwidget()
 		})
-
 	})
 
 	observeEvent(input$scan_sr_comp, {
 		output$scan_sr <- renderRglwidget({
 			clear3d()
 			bg3d("white")
-			rgl.triangles(get(input$scan_sr_comp), col = "grey70", ambient = "black", specular = "grey5", emission = "black", shininess = 128)
+			if(input$scan_sr_comp == "srSTL_0") {
+				text3d(x = -10, cex = 0.9, texts = "No cast exists for this score. An example will be added at a later date.")
+			} else {
+				rgl.triangles(get(input$scan_sr_comp), col = "grey70", ambient = "black", specular = "grey5", emission = "black", shininess = 128)
+				rgl.viewpoint(theta = 0, phi = -90, fov = 0)
+			}
 			rglwidget()
 		})
-
-		})
+	})
 
 	observe({
 		if (input$close > 0) stopApp() # stop shiny
