@@ -41,7 +41,7 @@ shinyUI(
 							mainPanel(
 								br(),
 								div("Reference Casts", style = "font-size: 22px; font-weight: bold; text-align: center;"),
-								
+
 								br(),
 								tabsetPanel(type = "tabs",
 									tabPanel("(I) Dorsal Plateau",
@@ -167,7 +167,7 @@ shinyUI(
 				),
 				tags$footer(
 					style = "position: relative; left: -15px; width: 102%; height: 60px; color: white; padding-top: 20px; padding-left: 20px; padding-right: 20px; background-color: #3e3f3a; font-size: 13px;",
-					"Data sourced from McKern, T.W. and T.D. Stewart (1957) Skeletal Age Changes in Young American Males. Quartermaster Research and Develoment Command Technical Report EP-45, Natick, MA."
+					"Data sourced from McKern, T.W. and T.D. Stewart (1957) Skeletal Age Changes in Young American Males. Quartermaster Research and Development Command Technical Report EP-45, Natick, MA."
 				)
 			)
 		)
